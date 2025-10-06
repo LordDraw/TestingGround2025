@@ -1,125 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.3 on win32)" generated="2025-10-05T11:40:12.954975" rpa="false" schemaversion="5">
-<suite id="s1" name="Test Setup" source="C:\Users\Pawel.Karczewski\Documents\RobotFramework\TestingGround2025\Tests\Test_Setup.robot">
-<test id="s1-t1" name="Simple Variable Test" line="11">
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-10-05T11:40:13.008274" level="INFO">Hello, Robot Framework!</msg>
-<arg>${MESSAGE}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.008097" elapsed="0.000233"/>
+<robot generator="Robot 7.3.2 (Python 3.13.3 on win32)" generated="2025-10-06T14:55:57.284406" rpa="false" schemaversion="5">
+<suite id="s1" name="07 Test Selenium Lib" source="C:\Users\Pawel.Karczewski\Documents\RobotFramework\TestingGround2025\Tests\07_Test_Selenium_Lib.robot">
+<test id="s1-t1" name="TC1: Navigate To Text Box Section And Fill The Form Via Resource" line="9">
+<kw name="Read Users From JSON File" owner="Load_Users">
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2025-10-06T14:55:57.483749" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\Pawel.Karczewski\Documents\RobotFramework\TestingGround2025\Data\users.json"&gt;C:\Users\Pawel.Karczewski\Documents\RobotFramework\TestingGround2025\Data\users.json&lt;/a&gt;'.</msg>
+<msg time="2025-10-06T14:55:57.483986" level="INFO">${content} = {
+  "users": [
+    {
+      "Full Name": "John Smith",
+      "Email": "john.smith@example.com",
+      "Current Address": "123 Main Street, Apartment 4B, New York, NY 10001, USA",
+      "Permanent Addre...</msg>
+<var>${content}</var>
+<arg>${PATH}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2025-10-06T14:55:57.483632" elapsed="0.000380"/>
 </kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${MESSAGE}</arg>
-<arg>Hello, Robot Framework!</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.009004" elapsed="0.000177"/>
-</kw>
-<doc>Test basic variable usage</doc>
-<status status="PASS" start="2025-10-05T11:40:13.007090" elapsed="0.002368"/>
-</test>
-<test id="s1-t2" name="Simple Math Test" line="16">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-10-05T11:40:13.010776" level="INFO">${result} = 15</msg>
-<var>${result}</var>
-<arg>10 + 5</arg>
+<msg time="2025-10-06T14:55:57.484344" level="INFO">${users} = {'users': [{'Full Name': 'John Smith', 'Email': 'john.smith@example.com', 'Current Address': '123 Main Street, Apartment 4B, New York, NY 10001, USA', 'Permanent Address': '456 Oak Avenue, Springfield...</msg>
+<var>${users}</var>
+<arg>json.loads('''${content}''')</arg>
+<arg>json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.010573" elapsed="0.000232"/>
+<status status="PASS" start="2025-10-06T14:55:57.484116" elapsed="0.000247"/>
 </kw>
-<kw name="Should Be Equal As Numbers" owner="BuiltIn">
-<msg time="2025-10-05T11:40:13.011212" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${result}</arg>
-<arg>15</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.011098" elapsed="0.000167"/>
+<return>
+<value>${users}</value>
+<status status="PASS" start="2025-10-06T14:55:57.484406" elapsed="0.000040"/>
+</return>
+<msg time="2025-10-06T14:55:57.484532" level="INFO">${users} = {'users': [{'Full Name': 'John Smith', 'Email': 'john.smith@example.com', 'Current Address': '123 Main Street, Apartment 4B, New York, NY 10001, USA', 'Permanent Address': '456 Oak Avenue, Springfield...</msg>
+<var>${users}</var>
+<doc>Reads user data from JSON file and returns parsed data</doc>
+<status status="PASS" start="2025-10-06T14:55:57.483160" elapsed="0.001388"/>
 </kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-10-05T11:40:13.011707" level="INFO">The result is: 15</msg>
-<arg>The result is: ${result}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.011564" elapsed="0.000184"/>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-10-06T14:55:57.485394" level="INFO">@{flat_list} = [ Full Name | John Smith | Email | john.smith@example.com | Current Address | 123 Main Street, Apartment 4B, New York, NY 10001, USA | Permanent Address | 456 Oak Avenue, Springfield, IL 62701, USA ]</msg>
+<var>@{flat_list}</var>
+<arg>[item for pair in ${users["users"][0]}.items() for item in pair]</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-10-06T14:55:57.484956" elapsed="0.000458"/>
 </kw>
-<doc>Test basic mathematical operations</doc>
-<status status="PASS" start="2025-10-05T11:40:13.010174" elapsed="0.001788"/>
-</test>
-<test id="s1-t3" name="String Operations Test" line="22">
-<kw name="Convert To Upper Case" owner="String">
-<msg time="2025-10-05T11:40:13.013599" level="INFO">${upper_case} = HELLO, ROBOT FRAMEWORK!</msg>
-<var>${upper_case}</var>
-<arg>${MESSAGE}</arg>
-<doc>Converts string to upper case.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.013012" elapsed="0.000688"/>
+<kw name="Open Browser To DemoQA" owner="DemoQALib">
+<kw name="Open Browser" owner="demoqa">
+<msg time="2025-10-06T14:55:57.486069" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<doc>Open Browser to the Demo QA</doc>
+<status status="PASS" start="2025-10-06T14:55:57.486001" elapsed="2.106815"/>
 </kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${upper_case}</arg>
-<arg>HELLO, ROBOT FRAMEWORK!</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.014272" elapsed="0.000539"/>
+<kw name="Navigate To Page" owner="demoqa">
+<msg time="2025-10-06T14:55:59.593119" level="INFO">Opening url 'https://demoqa.com/'</msg>
+<msg time="2025-10-06T14:56:02.645856" level="INFO">Clicking element '//p[contains(text(), 'Consent')]'.</msg>
+<status status="PASS" start="2025-10-06T14:55:59.593014" elapsed="3.187455"/>
 </kw>
-<kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-05T11:40:13.015381" level="INFO">Length is 23.</msg>
-<msg time="2025-10-05T11:40:13.015503" level="INFO">${length} = 23</msg>
-<var>${length}</var>
-<arg>${MESSAGE}</arg>
-<doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.015129" elapsed="0.000413"/>
+<doc>Opens a browser and navigates to DemoQA website</doc>
+<status status="PASS" start="2025-10-06T14:55:57.485847" elapsed="5.294737"/>
 </kw>
-<kw name="Should Be True" owner="BuiltIn">
-<arg>${length} &gt; 0</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.015835" elapsed="0.000363"/>
+<kw name="Elements: Navigate To Page" owner="DemoQALib">
+<kw name="Navigate To Page" owner="elements">
+<msg time="2025-10-06T14:56:03.379310" level="INFO">Clicking element '//h5[contains(text(), 'Elements')]'.</msg>
+<msg time="2025-10-06T14:56:04.586476" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element &lt;h5&gt;...&lt;/h5&gt; is not clickable at point (154, 671). Other element would receive the click: &lt;div id="fixedban" style="width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:fixed;bottom:0;z-index:9999999"&gt;...&lt;/div&gt;
+  (Session info: chrome=138.0.7204.100); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff770b7e415+77285]
+	GetHandleVerifier [0x0x7ff770b7e470+77376]
+	(No symbol) [0x0x7ff770949a6a]
+	(No symbol) [0x0x7ff7709a83e9]
+	(No symbol) [0x0x7ff7709a5d8b]
+	(No symbol) [0x0x7ff7709a2dd1]
+	(No symbol) [0x0x7ff7709a1ce1]
+	(No symbol) [0x0x7ff770993458]
+	(No symbol) [0x0x7ff7709c860a]
+	(No symbol) [0x0x7ff770992d06]
+	(No symbol) [0x0x7ff7709c8820]
+	(No symbol) [0x0x7ff7709f087f]
+	(No symbol) [0x0x7ff7709c83e3]
+	(No symbol) [0x0x7ff770991521]
+	(No symbol) [0x0x7ff7709922b3]
+	GetHandleVerifier [0x0x7ff770e61efd+3107021]
+	GetHandleVerifier [0x0x7ff770e5c29d+3083373]
+	GetHandleVerifier [0x0x7ff770e7bedd+3213485]
+	GetHandleVerifier [0x0x7ff770b9884e+184862]
+	GetHandleVerifier [0x0x7ff770ba055f+216879]
+	GetHandleVerifier [0x0x7ff770b87084+113236]
+	GetHandleVerifier [0x0x7ff770b87239+113673]
+	GetHandleVerifier [0x0x7ff770b6e298+11368]
+	(No symbol) [0x0x7ff88ed4e8d7]
+	RtlUserThreadStart [0x0x7ff88f6fc34c+44]
+</msg>
+<status status="FAIL" start="2025-10-06T14:56:02.781793" elapsed="1.815993">ElementClickInterceptedException: Message: element click intercepted: Element &lt;h5&gt;...&lt;/h5&gt; is not clickable at point (154, 671). Other element would receive the click: &lt;div id="fixedban" style="width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:fixed;bottom:0;z-index:9999999"&gt;...&lt;/div&gt;
+  (Session info: chrome=138.0.7204.100); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff770b7e415+77285]
+	GetHandleVerifier [0x0x7ff770b7e470+77376]
+	(No symbol) [0x0x7ff770949a6a]
+	(No symbol) [0x0x7ff7709a83e9]
+	(No symbol) [0x0x7ff7709a5d8b]
+	(No symbol) [0x0x7ff7709a2dd1]
+	(No symbol) [0x0x7ff7709a1ce1]
+	(No symbol) [0x0x7ff770993458]
+	(No symbol) [0x0x7ff7709c860a]
+	(No symbol) [0x0x7ff770992d06]
+	(No symbol) [0x0x7ff7709c8820]
+	(No symbol) [0x0x7ff7709f087f]
+	(No symbol) [0x0x7ff7709c83e3]
+	(No symbol) [0x0x7ff770991521]
+	(No symbol) [0x0x7ff7709922b3]
+	GetHandleVerifier [0x0x7ff770e61efd+3107021]
+	GetHandleVerifier [0x0x7ff770e5c29d+3083373]
+	GetHandleVerifier [0x0x7ff770e7bedd+3213485]
+	GetHandleVerifier [0x0x7ff770b9884e+184862]
+	GetHandleVerifier [0x0x7ff770ba055f+216879]
+	GetHandleVerifier [0x0x7ff770b87084+113236]
+	GetHandleVerifier [0x0x7ff770b87239+113673]
+	GetHandleVerifier [0x0x7ff770b6e298+11368]
+	(No symbol) [0x0x7ff88ed4e8d7]
+	RtlUserThreadStart [0x0x7ff88f6fc34c+44]
+</status>
 </kw>
-<doc>Test string manipulation</doc>
-<status status="PASS" start="2025-10-05T11:40:13.012510" elapsed="0.004159"/>
-</test>
-<test id="s1-t4" name="List Operations Test" line="29">
-<kw name="Create List" owner="BuiltIn">
-<msg time="2025-10-05T11:40:13.017669" level="INFO">@{fruits} = [ apple | banana | orange ]</msg>
-<var>@{fruits}</var>
-<arg>apple</arg>
-<arg>banana</arg>
-<arg>orange</arg>
-<doc>Returns a list containing given items.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.017521" elapsed="0.000175"/>
+<doc>Navigates to the Elements section on DemoQA</doc>
+<status status="FAIL" start="2025-10-06T14:56:02.781413" elapsed="1.816664">ElementClickInterceptedException: Message: element click intercepted: Element &lt;h5&gt;...&lt;/h5&gt; is not clickable at point (154, 671). Other element would receive the click: &lt;div id="fixedban" style="width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:fixed;bottom:0;z-index:9999999"&gt;...&lt;/div&gt;
+  (Session info: chrome=138.0.7204.100); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff770b7e415+77285]
+	GetHandleVerifier [0x0x7ff770b7e470+77376]
+	(No symbol) [0x0x7ff770949a6a]
+	(No symbol) [0x0x7ff7709a83e9]
+	(No symbol) [0x0x7ff7709a5d8b]
+	(No symbol) [0x0x7ff7709a2dd1]
+	(No symbol) [0x0x7ff7709a1ce1]
+	(No symbol) [0x0x7ff770993458]
+	(No symbol) [0x0x7ff7709c860a]
+	(No symbol) [0x0x7ff770992d06]
+	(No symbol) [0x0x7ff7709c8820]
+	(No symbol) [0x0x7ff7709f087f]
+	(No symbol) [0x0x7ff7709c83e3]
+	(No symbol) [0x0x7ff770991521]
+	(No symbol) [0x0x7ff7709922b3]
+	GetHandleVerifier [0x0x7ff770e61efd+3107021]
+	GetHandleVerifier [0x0x7ff770e5c29d+3083373]
+	GetHandleVerifier [0x0x7ff770e7bedd+3213485]
+	GetHandleVerifier [0x0x7ff770b9884e+184862]
+	GetHandleVerifier [0x0x7ff770ba055f+216879]
+	GetHandleVerifier [0x0x7ff770b87084+113236]
+	GetHandleVerifier [0x0x7ff770b87239+113673]
+	GetHandleVerifier [0x0x7ff770b6e298+11368]
+	(No symbol) [0x0x7ff88ed4e8d7]
+	RtlUserThreadStart [0x0x7ff88f6fc34c+44]
+</status>
 </kw>
-<kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-05T11:40:13.018062" level="INFO">Length is 3.</msg>
-<msg time="2025-10-05T11:40:13.018118" level="INFO">${count} = 3</msg>
-<var>${count}</var>
-<arg>${fruits}</arg>
-<doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.017971" elapsed="0.000166"/>
+<kw name="TextBox: Navigate To Page" owner="DemoQALib">
+<doc>Navigates to the Text Box page under Elements</doc>
+<status status="NOT RUN" start="2025-10-06T14:56:04.599350" elapsed="0.000077"/>
 </kw>
-<kw name="Should Be Equal As Numbers" owner="BuiltIn">
-<msg time="2025-10-05T11:40:13.018499" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${count}</arg>
-<arg>3</arg>
-<doc>Fails if objects are unequal after converting them to real numbers.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.018392" elapsed="0.000157"/>
+<kw name="TextBox: Choose Parameters" owner="DemoQALib">
+<arg>@{flat_list}</arg>
+<doc>Chooses parameters and fills values in the Text Box form</doc>
+<status status="NOT RUN" start="2025-10-06T14:56:04.599883" elapsed="0.000027"/>
 </kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${fruits}</arg>
-<arg>banana</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" start="2025-10-05T11:40:13.018908" elapsed="0.000552"/>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-06T14:56:04.600229" elapsed="0.000033"/>
 </kw>
-<doc>Test list operations</doc>
-<status status="PASS" start="2025-10-05T11:40:13.017109" elapsed="0.002688"/>
+<kw name="Close Browser" owner="DemoQALib" type="TEARDOWN">
+<kw name="Close Browser" owner="demoqa">
+<status status="PASS" start="2025-10-06T14:56:04.601048" elapsed="2.393118"/>
+</kw>
+<doc>Closes all open browser instances</doc>
+<status status="PASS" start="2025-10-06T14:56:04.600693" elapsed="2.393747"/>
+</kw>
+<tag>demo</tag>
+<tag>navigate_to_text_box_and_fill_form_via_resource</tag>
+<status status="FAIL" start="2025-10-06T14:55:57.482204" elapsed="9.512798">ElementClickInterceptedException: Message: element click intercepted: Element &lt;h5&gt;...&lt;/h5&gt; is not clickable at point (154, 671). Other element would receive the click: &lt;div id="fixedban" style="width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:fixed;bottom:0;z-index:9999999"&gt;...&lt;/div&gt;
+  (Session info: chrome=138.0.7204.100); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff770b7e415+77285]
+	GetHandleVerifier [0x0x7ff770b7e470+77376]
+	(No symbol) [0x0x7ff770949a6a]
+	(No symbol) [0x0x7ff7709a83e9]
+	(No symbol) [0x0x7ff7709a5d8b]
+	(No symbol) [0x0x7ff7709a2dd1]
+	(No symbol) [0x0x7ff7709a1ce1]
+	(No symbol) [0x0x7ff770993458]
+	(No symbol) [0x0x7ff7709c860a]
+	(No symbol) [0x0x7ff770992d06]
+	(No symbol) [0x0x7ff7709c8820]
+	(No symbol) [0x0x7ff7709f087f]
+	(No symbol) [0x0x7ff7709c83e3]
+	(No symbol) [0x0x7ff770991521]
+	(No symbol) [0x0x7ff7709922b3]
+	GetHandleVerifier [0x0x7ff770e61efd+3107021]
+	GetHandleVerifier [0x0x7ff770e5c29d+3083373]
+	GetHandleVerifier [0x0x7ff770e7bedd+3213485]
+	GetHandleVerifier [0x0x7ff770b9884e+184862]
+	GetHandleVerifier [0x0x7ff770ba055f+216879]
+	GetHandleVerifier [0x0x7ff770b87084+113236]
+	GetHandleVerifier [0x0x7ff770b87239+113673]
+	GetHandleVerifier [0x0x7ff770b6e298+11368]
+	(No symbol) [0x0x7ff88ed4e8d7]
+	RtlUserThreadStart [0x0x7ff88f6fc34c+44]
+</status>
 </test>
 <doc>Simple Robot Framework test setup</doc>
-<status status="PASS" start="2025-10-05T11:40:12.956574" elapsed="0.065530"/>
+<status status="FAIL" start="2025-10-06T14:55:57.290406" elapsed="9.713056"/>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="0" fail="1" skip="0">demo</stat>
+<stat pass="0" fail="1" skip="0">navigate_to_text_box_and_fill_form_via_resource</stat>
 </tag>
 <suite>
-<stat name="Test Setup" id="s1" pass="4" fail="0" skip="0">Test Setup</stat>
+<stat name="07 Test Selenium Lib" id="s1" pass="0" fail="1" skip="0">07 Test Selenium Lib</stat>
 </suite>
 </statistics>
 <errors>

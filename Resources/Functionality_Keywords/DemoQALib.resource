@@ -1,7 +1,7 @@
 *** Settings ***
-Library    C:${/}workshop${/}TestingGround2025${/}Libs${/}DemoQADriver${/}demoqa.py
-Library    C:${/}workshop${/}TestingGround2025${/}Libs${/}DemoQADriver${/}Elements${/}elements.py
-Library    C:${/}workshop${/}TestingGround2025${/}Libs${/}DemoQADriver${/}Elements${/}textbox.py
+Library    ${EXECDIR}${/}Libs${/}DemoQADriver${/}demoqa.py
+Library    ${EXECDIR}${/}Libs${/}DemoQADriver${/}Elements${/}elements.py
+Library    ${EXECDIR}${/}Libs${/}DemoQADriver${/}Elements${/}textbox.py
 
 
 *** Keywords ***

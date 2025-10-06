@@ -1,21 +1,21 @@
 *** Settings ***
-Documentation    Simple Robot Framework Test Setup
-Library    Collections
-Library    String
+Documentation    Simple Robot Framework test setup
+Library          Collections
+Library          String
 
-Test Tags    demo
+Test Tags        demo
 
 *** Variables ***
-${name}    Paweł Karczewski
-@{FRIENDS_LIST}    Andrzej    Karolina    Piotr
-&{FRIENDS_DICT}    Piotr=Friend    Andrzej=BestFriend    Karolina=CloseFriend
+${NAME}          Paweł Karczewski
+@{FRIENDS_LIST}       Andrzej    Karolina    Piotr
+&{FRIENDS_DICT}  Andrzej=Friend    Karolina=Best Friend    Piotr=Close Friend
 
 *** Test Cases ***
 TC1: Create Keyword To Print Your Name
-    [Tags]    import_name
+    [Tags]    keyword_name
     Print My Name    Paweł Karczewski
 
-TC2: Create Keyword To Print Your Name With Defaualt Argument
+TC2: Create Keyword To Print Your Name With Default Argument
     [Tags]    keyword_name_default_argument
     Print My Name With Default    Klara Kowalska
 
@@ -67,7 +67,7 @@ Print Str Variable And Your FRIEND LIST
     END
 
 Print Str Variable With Default And Your FRIEND LIST
-    [Arguments]    ${name}=APaweł Karczewski    @{friends}
+    [Arguments]    ${name}=Paweł Karczewski    @{friends}
     Log    Name: ${name}
     FOR    ${friend}    IN    @{friends}
         Log    Friend: ${friend}
@@ -92,3 +92,4 @@ Print Str Variable With Default And Your FRIEND DICT
     FOR    ${key}    ${value}    IN    &{friends_dict}
         Log    ${key}: ${value}
     END
+
