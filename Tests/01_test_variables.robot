@@ -58,6 +58,11 @@ TC9: Print Your Friends From Dictionary One By One
     FOR    ${key}    ${value}    IN    &{FRIENDS_DICT}
         Log    ${key}: ${value}
     END
+
+    
 *** Keywords ***
+Print My Name
+    [Arguments]    ${name}
+    Log    ${name}
 
 #python-m robot -i 
