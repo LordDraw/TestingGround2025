@@ -1,7 +1,6 @@
 *** Settings ***
-Library    Collections
-Library    String
-
+Library          Collections
+Library          String
 
 *** Keywords ***
 Print My Name
@@ -9,7 +8,7 @@ Print My Name
     Log    ${name}
 
 Print My Name With Default
-    [Arguments]    ${name}=Paweł Karczewski
+    [Arguments]    ${name}=Artur Ziółkowski
     Log    ${name}
 
 Print My Friends List
@@ -26,7 +25,7 @@ Print Str Variable And Your FRIEND LIST
     END
 
 Print Str Variable With Default And Your FRIEND LIST
-    [Arguments]    ${name}=APaweł Karczewski    @{friends}
+    [Arguments]    ${name}=Artur Ziółkowski    @{friends}
     Log    Name: ${name}
     FOR    ${friend}    IN    @{friends}
         Log    Friend: ${friend}
@@ -46,7 +45,7 @@ Print Str Variable And Your FRIEND DICT
     END
 
 Print Str Variable With Default And Your FRIEND DICT
-    [Arguments]    ${name}=Paweł Karczewski    &{friends_dict}
+    [Arguments]    ${name}=Artur Ziółkowski    &{friends_dict}
     Log    Name: ${name}
     FOR    ${key}    ${value}    IN    &{friends_dict}
         Log    ${key}: ${value}
